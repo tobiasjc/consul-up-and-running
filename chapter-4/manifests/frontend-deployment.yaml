@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        service: frontend
+        app: frontend
+      annotations:
+        consul.hashicorp.com/connect-inject: "true"
+    spec:
+      serviceAccountName: frontend
+      containers:
+        - name: frontend
+          image: ghcr.io/consul-up/birdwatcher-frontend:1.0.0
+          env:
+            - name: BIND_ADDR
+              value: "0.0.0.0:6060"
+            - name: BACKEND_URL
+              value: "http://backend"
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 6060
