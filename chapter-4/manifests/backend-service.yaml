@@ -3,8 +3,25 @@ kind: Service
 metadata:
   name: backend
 spec:
+  type: ClusterIP
   selector:
     app: backend
   ports:
-  - port: 80
+  - protocol: TCP
+    port: 80
     targetPort: 7000
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: backend
+  namespace: default
+automountServiceAccountToken: true
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceDefaults
+metadata:
+  name: backend
+  namespace: default
+spec:
+  protocol: "http"

@@ -10,7 +10,10 @@ spec:
     metadata:
       labels:
         app: backend
+      annotations:
+        consul.hashicorp.com/connect-inject: "true"
     spec:
+      serviceAccountName: backend
       containers:
         - name: backend
           image: ghcr.io/consul-up/birdwatcher-backend:1.0.0
