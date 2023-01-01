@@ -13,6 +13,6 @@ spec:
             value: /
       backendRefs:
         - kind: Service
-          name: envoy
+          name: nginx
           namespace: default
           port: 80
