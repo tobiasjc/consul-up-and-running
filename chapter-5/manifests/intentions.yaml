@@ -21,3 +21,27 @@ spec:
   sources:
     - name: frontend
       action: allow
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
+  name: fontend
+  namespace: default
+spec:
+  destination:
+    name: fontend
+  sources:
+    - name: nginx
+      action: allow
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
+  name: nginx
+  namespace: default
+spec:
+  destination:
+    name: nginx
+  sources:
+    - name: api-gateway
+      action: allow

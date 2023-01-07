@@ -1,7 +1,7 @@
 BEFORE starting to run the values to upgrade the consul deployment, and the api-gateway manifest, please run the following costumization:
 
 ```bash
-$ kubectl apply --kustomize "github.com/hashicorp/consul-api-gateway/config/crd?ref=v0.5.0"
+$ kubectl apply --kustomize "github.com/hashicorp/consul-api-gateway/config/crd?ref=v0.5.1"
 ```
 
 Which defines a set of CRD for the api-controller.
