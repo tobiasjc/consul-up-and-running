@@ -32,7 +32,7 @@ ui:
 
 apiGateway:
   enabled: true
-  image: "hashicorp/consul-api-gateway:0.5.1"
+  image: "hashicorp/consul-api-gateway:0.5.0"
   managedGatewayClass:
     serviceType: NodePort
     useHostPorts: true
