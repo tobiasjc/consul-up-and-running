@@ -6,11 +6,8 @@ metadata:
 spec:
   gatewayClassName: consul-api-gateway
   listeners:
-    - protocol: HTTP
-      # fix: on the original tutorial documentation
-      # (here: https://developer.hashicorp.com/consul/tutorials/get-started-kubernetes/kubernetes-gs-ingress#deploy-consul-api-gateway)
-      # the port is "8443", which is... wrong?
-      port: 8080
+    - protocol: HTTPS
+      port: 8443
       name: https
       allowedRoutes:
         namespaces:

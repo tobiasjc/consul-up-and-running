@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: backend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: backend
@@ -21,13 +21,13 @@ spec:
           image: ghcr.io/consul-up/birdwatcher-backend:1.0.0
           env:
             - name: BIND_ADDR
-              value: "0.0.0.0:7000"
+              value: "0.0.0.0:7070"
           resources:
             limits:
               memory: "128Mi"
               cpu: "500m"
           ports:
-            - containerPort: 7000
+            - containerPort: 7070
 ---
 apiVersion: v1
 kind: Service
@@ -38,9 +38,8 @@ spec:
   selector:
     app: backend
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 7000
+    - port: 80
+      targetPort: 7070
 ---
 apiVersion: v1
 kind: ServiceAccount

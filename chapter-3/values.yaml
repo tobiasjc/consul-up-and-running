@@ -1,31 +1,34 @@
 global:
- enabled: true
- name: consul
- datacenter: dc1
-
- metrics:
+  image: hashicorp/consul:1.14.2
   enabled: true
+  name: consul
+  datacenter: dc1
 
- tls:
-  enabled: true
+  metrics:
+    enabled: true
 
- acls:
-  manageSystemACLs: true
+  tls:
+    enabled: true
+    enableAutoEncrypt: true
+    verify: true
+
+  acls:
+    manageSystemACLs: true
 
 controller:
- enabled: true
+  enabled: true
 
 server:
- enabled: true
- replicas: 1
+  enabled: true
+  replicas: 1
 
 connectInject:
- enabled: true
+  enabled: true
 
 prometheus:
- enabled: true
+  enabled: true
 
 ui:
- enabled: true
- service:
-  type: NodePort
+  enabled: true
+  service:
+    type: NodePort
