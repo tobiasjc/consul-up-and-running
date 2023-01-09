@@ -31,4 +31,4 @@ prometheus:
 ui:
   enabled: true
   service:
-    type: NodePort
+    type: ClusterIP

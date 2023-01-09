@@ -2,6 +2,18 @@
 apiVersion: consul.hashicorp.com/v1alpha1
 kind: ServiceIntentions
 metadata:
+  name: nginx
+  namespace: default
+spec:
+  destination:
+    name: nginx
+  sources:
+    - name: ingress-gateway
+      action: allow
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
   name: frontend
   namespace: default
 spec:

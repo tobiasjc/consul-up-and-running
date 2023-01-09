@@ -31,11 +31,16 @@ prometheus:
 ui:
   enabled: true
   service:
-    type: NodePort
+    type: ClusterIP
 
-apiGateway:
+ingressGateways:
   enabled: true
-  image: "hashicorp/consul-api-gateway:0.5.0"
-  managedGatewayClass:
-    serviceType: NodePort
-    useHostPorts: true
+  defaults:
+    affinity: null
+  gateways:
+    - name: ingress-gateway
+      service:
+        type: ClusterIP
+        ports:
+          - port: 8888
+      replicas: 1
